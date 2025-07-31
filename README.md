@@ -14,6 +14,8 @@ over OpenGL objects (e.g VAOs, VBOs).
 
 ### Windows
 
+#### CMake
+
 This project uses CMake as its main build system.
 You may require to download this as a prerequisite.
 
