@@ -17,7 +17,6 @@ namespace playground::core
         return *instance;
     }
 
-    // Init window and graphics context
     app::app()
         : is_running(true)
     {
@@ -37,6 +36,7 @@ namespace playground::core
 
     void app::init_deps()
     {
+        // Init window and graphics context
         window = std::make_unique<::playground::core::window>(
             "playground", 640, 480);
         gfx_ctx = std::make_unique<gfx::ogl_ctx>(window->get_internal());
