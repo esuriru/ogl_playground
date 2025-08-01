@@ -12,6 +12,8 @@ over OpenGL objects (e.g VAOs, VBOs).
 
 ## Getting Started
 
+To get started, clone this repository.
+
 ### Windows
 
 #### CMake
