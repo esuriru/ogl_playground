@@ -39,7 +39,7 @@ namespace playground::core
 
         // Handle callbacks
         glfwSetWindowSizeCallback(handle, on_resize);
-        glfwSetWindowCloseCallback(handle, on_window);
+        glfwSetWindowCloseCallback(handle, on_close);
     }
 
     window::~window()
@@ -66,7 +66,7 @@ namespace playground::core
         wrapper->height = height;
     }
 
-    void window::on_window(GLFWwindow* window)
+    void window::on_close(GLFWwindow* window)
     {
         app::get().close();
     }

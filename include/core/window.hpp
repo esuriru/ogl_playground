@@ -6,6 +6,7 @@ struct GLFWwindow;
 
 namespace playground::core
 {
+    // GLFW Window wrapper, handles initialization of GLFW
     class window
     {
     public:
@@ -37,6 +38,6 @@ namespace playground::core
         unsigned int width, height;
 
         static void on_resize(GLFWwindow* window, int width, int height);
-        static void on_window(GLFWwindow* window);
+        static void on_close(GLFWwindow* window);
     };
 }
