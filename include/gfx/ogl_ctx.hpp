@@ -4,6 +4,7 @@ struct GLFWwindow;
 
 namespace playground::gfx
 {
+    // OpenGL loader wrapper, loads functions using GLAD
     class ogl_ctx final 
     {
     public:

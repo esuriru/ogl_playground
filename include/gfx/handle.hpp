@@ -2,6 +2,7 @@
 
 namespace playground::gfx
 {
+    // Base class for objects that have a handle (e.g OpenGL objects)
     class handle
     {
     public:

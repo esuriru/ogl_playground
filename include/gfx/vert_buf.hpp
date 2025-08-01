@@ -7,9 +7,11 @@
 
 namespace playground::gfx 
 {
+    // OpenGL Vertex Buffer Object (VBO) wrapper
     class vert_buf : public handle
     {
     public:
+        // Buffer layout for vertex buffer
         class buf_layout 
         {
         public:

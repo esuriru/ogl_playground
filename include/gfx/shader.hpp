@@ -7,6 +7,7 @@
 
 namespace playground::gfx
 {
+    // OpenGL Shader (GLSL) wrapper
     class shader : public handle
     {
     public:

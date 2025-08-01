@@ -4,6 +4,7 @@
 
 namespace playground::gfx
 {
+    // Index buffer (EBO) wrapper
     class index_buf : public handle
     {
     public:

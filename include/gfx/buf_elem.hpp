@@ -5,6 +5,7 @@
 
 namespace playground::gfx 
 {
+    // Vertex buffer element primitive
     struct buf_elem
     {
         std::string name;

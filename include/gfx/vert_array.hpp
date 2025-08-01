@@ -7,6 +7,7 @@
 
 namespace playground::gfx 
 {
+    // OpenGL Vertex Array Object (VAO) wrapper
     class vert_array : public handle
     {
     public:
