@@ -12,7 +12,7 @@ namespace playground::core::time
 {
     void update()
     {
-        float current_time = glfwGetTime(); 
+        float current_time = glfwGetTime();
         delta_time = current_time - last_frame_time;
         last_frame_time = current_time;
     }
@@ -22,4 +22,3 @@ namespace playground::core::time
         return delta_time;
     }
 }
-

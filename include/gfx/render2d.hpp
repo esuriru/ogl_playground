@@ -15,8 +15,6 @@ namespace playground::gfx::render2d
     void set_proj_mat(const glm::mat4& mat);
 
     // Draw a white quad
-    void draw_quad(
-        const glm::vec2& world_pos, 
-        const float rotation,
+    void draw_quad(const glm::vec2& world_pos, const float rotation,
         const glm::vec2& size);
 }

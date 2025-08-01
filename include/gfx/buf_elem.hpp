@@ -3,7 +3,7 @@
 #include "shader_data_type.hpp"
 #include <string>
 
-namespace playground::gfx 
+namespace playground::gfx
 {
     // Vertex buffer element primitive
     struct buf_elem

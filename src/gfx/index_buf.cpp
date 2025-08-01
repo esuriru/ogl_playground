@@ -2,10 +2,9 @@
 
 #include "glad/gl.h"
 
-namespace playground::gfx 
+namespace playground::gfx
 {
-    index_buf::index_buf(
-        const unsigned int* indices, const unsigned int count)
+    index_buf::index_buf(const unsigned int* indices, const unsigned int count)
         : count(count)
     {
         glCreateBuffers(1, &id);

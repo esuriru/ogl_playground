@@ -5,19 +5,18 @@
 
 #include <vector>
 
-namespace playground::gfx 
+namespace playground::gfx
 {
     // OpenGL Vertex Buffer Object (VBO) wrapper
     class vert_buf : public handle
     {
     public:
         // Buffer layout for vertex buffer
-        class buf_layout 
+        class buf_layout
         {
         public:
             buf_layout() = default;
-            buf_layout(
-                std::initializer_list<gfx::buf_elem> elements);
+            buf_layout(std::initializer_list<gfx::buf_elem> elements);
 
             inline unsigned int get_stride() const
             {

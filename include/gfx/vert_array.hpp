@@ -5,7 +5,7 @@
 #include "gfx/index_buf.hpp"
 #include <memory>
 
-namespace playground::gfx 
+namespace playground::gfx
 {
     // OpenGL Vertex Array Object (VAO) wrapper
     class vert_array : public handle

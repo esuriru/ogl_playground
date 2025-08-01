@@ -1,6 +1,6 @@
 #include "gfx/buf_elem.hpp"
 
-namespace playground::gfx 
+namespace playground::gfx
 {
     buf_elem::buf_elem(
         shader_data_type type, const std::string& name, const bool normalized)

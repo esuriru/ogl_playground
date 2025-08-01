@@ -38,8 +38,7 @@ namespace playground::gfx::render2d
     }
 
     [[nodiscard]]
-    std::shared_ptr<shader> load_shader(
-        const std::string& name,
+    std::shared_ptr<shader> load_shader(const std::string& name,
         const std::filesystem::path& vert_path,
         const std::filesystem::path& frag_path)
     {
@@ -52,13 +51,9 @@ namespace playground::gfx::render2d
     void init()
     {
         texture_shader = load_shader(
-            "texture",
-            "shaders/texture_v.glsl",
-            "shaders/texture_f.glsl");
+            "texture", "shaders/texture_v.glsl", "shaders/texture_f.glsl");
         white_shader = load_shader(
-            "white",
-            "shaders/texture_v.glsl",
-            "shaders/white_f.glsl");
+            "white", "shaders/texture_v.glsl", "shaders/white_f.glsl");
 
         // clang-format off
         std::vector<float> vertices = 

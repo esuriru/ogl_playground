@@ -1,6 +1,6 @@
 #pragma once
 
-namespace playground::gfx 
+namespace playground::gfx
 {
     enum class shader_data_type
     {

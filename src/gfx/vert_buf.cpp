@@ -1,7 +1,7 @@
 #include "gfx/vert_buf.hpp"
 #include "glad/gl.h"
 
-namespace playground::gfx 
+namespace playground::gfx
 {
     vert_buf::buf_layout::buf_layout(
         std::initializer_list<gfx::buf_elem> elements)
