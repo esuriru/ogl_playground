@@ -24,5 +24,6 @@ You may require to download this as a prerequisite.
 Tested kits:
 
 * GCC 13.2 (ucrt64)
+* Clang 19.1.1
 
 Run executable target `playground`.
