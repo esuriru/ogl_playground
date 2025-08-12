@@ -22,6 +22,8 @@ set(SOURCES
     "src/gfx/ogl_ctx.cpp"
     "src/gfx/shader.cpp"
     "src/gfx/render2d.cpp"
+    "src/gfx/tex2d.cpp"
+    "src/gfx/image.cpp"
 )
 
 add_executable(playground ${SOURCES})
