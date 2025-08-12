@@ -3,6 +3,7 @@
 #include "gfx/shader.hpp"
 #include "gfx/vert_array.hpp"
 #include "gfx/command.hpp"
+#include "gfx/tex2d.hpp"
 
 #include "glm/gtc/matrix_transform.hpp"
 
@@ -23,6 +24,8 @@ namespace
 
     std::shared_ptr<shader> white_shader;
     std::shared_ptr<shader> texture_shader;
+
+    std::shared_ptr<tex2d> white_texture;
 }
 
 namespace playground::gfx::render2d
@@ -54,6 +57,13 @@ namespace playground::gfx::render2d
             "texture", "shaders/texture_v.glsl", "shaders/texture_f.glsl");
         white_shader = load_shader(
             "white", "shaders/texture_v.glsl", "shaders/white_f.glsl");
+
+        unsigned int white_data = 0xFFFFFFFF; 
+        white_texture = std::make_shared<tex2d>(1,
+            1,
+            format::rgba,
+            &white_data,
+            sizeof(white_data));
 
         // clang-format off
         std::vector<float> vertices = 
@@ -97,6 +107,9 @@ namespace playground::gfx::render2d
     void cleanup()
     {
         quad_vert_array.reset();
+
+        texture_shader.reset();
+        white_shader.reset();
     }
 
     void set_view_mat(const glm::mat4& mat)
@@ -109,24 +122,38 @@ namespace playground::gfx::render2d
         proj_mat = mat;
     }
 
-    void draw_quad(
-        const glm::vec2& world_pos, const float rotation, const glm::vec2& size)
+    void draw_quad(const glm::vec2& world_pos, const float rot_deg,
+        const glm::vec2& size, tex2d* tex, 
+        const glm::vec4& color)
     {
-        white_shader->bind();
+        constexpr unsigned int slot = 1;
+
+        texture_shader->bind();
 
         // clang-format off
         glm::mat4 model_matrix = 
             glm::translate(glm::identity<glm::mat4>(),
                 glm::vec3(world_pos, 0.0f))
-            * glm::rotate(glm::identity<glm::mat4>(), glm::radians(rotation),
+            * glm::rotate(glm::identity<glm::mat4>(), glm::radians(rot_deg),
                 { 0.0f, 0.0f, 1.0f })
             * glm::scale(glm::identity<glm::mat4>(), glm::vec3(size, 0.0f));
         // clang-format on
 
         glm::mat4 MVP = proj_mat * view_mat * model_matrix;
 
-        white_shader->set_mat4("MVP", MVP);
+        texture_shader->set_mat4("MVP", MVP);
 
+        if (tex)
+        {
+            tex->bind(slot);
+        }
+        else
+        {
+            white_texture->bind(slot);
+        }
+
+        texture_shader->set_vec4("tintColor", color);
+        texture_shader->set_int("tex", slot);
         command::draw_indexed(*quad_vert_array);
     }
 }
