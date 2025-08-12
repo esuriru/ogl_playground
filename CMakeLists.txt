@@ -39,6 +39,11 @@ if(POLICY CMP0135)
     cmake_policy(SET CMP0135 NEW)
 endif()
 
+# (embedded) stb_image
+add_subdirectory("deps/stb/image")
+target_link_libraries(playground PUBLIC stb_image)
+
+# glm
 FetchContent_Declare(
     glm
     URL https://github.com/g-truc/glm/archive/refs/tags/1.0.1.zip
@@ -46,10 +51,10 @@ FetchContent_Declare(
         SHA256=09C5716296787E1F7FCB87B1CBDBF26814EC1288ED6259CCD30D5D9795809FA5
 )
 
-# glm
 add_subdirectory("deps/glm")
 target_link_libraries(playground PUBLIC glm::glm)
 
+# glfw
 FetchContent_Declare(
     glfw
     URL https://github.com/glfw/glfw/archive/refs/tags/3.4.zip
@@ -57,7 +62,6 @@ FetchContent_Declare(
         SHA256=A133DDC3D3C66143EBA9035621DB8E0BCF34DBA1EE9514A9E23E96AFD39FD57A
 )
 
-# glfw
 add_subdirectory("deps/glfw")
 target_link_libraries(playground PUBLIC glfw)
 target_include_directories(playground PUBLIC ${GLFW_SOURCE_DIR})
