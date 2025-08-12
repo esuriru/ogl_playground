@@ -122,6 +122,12 @@ namespace playground::gfx
         glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
     }
 
+    void shader::set_vec4(const std::string& name, const glm::vec4& value)
+    {
+        const auto& location = glGetUniformLocation(id, name.c_str());
+        glUniform4fv(location, 1, glm::value_ptr(value));
+    }
+
     const std::string& shader::get_name()
     {
         return name;

@@ -19,6 +19,7 @@ namespace playground::gfx
 
         void set_int(const std::string& name, const int value);
         void set_mat4(const std::string& name, const glm::mat4& value);
+        void set_vec4(const std::string& name, const glm::vec4& value);
 
         virtual const std::string& get_name();
 
