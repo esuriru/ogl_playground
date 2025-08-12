@@ -4,6 +4,7 @@
 #include "gfx/render2d.hpp"
 #include "gfx/command.hpp"
 
+#include "gfx/tex2d.hpp"
 #include "glm/glm.hpp"
 #include "glm/ext/matrix_transform.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
@@ -40,12 +41,15 @@ namespace playground::core
         window = std::make_unique<::playground::core::window>(
             "playground", 640, 480);
         gfx_ctx = std::make_unique<gfx::ogl_ctx>(window->get_internal());
+
+        gfx::command::init();
         gfx::render2d::init();
     }
 
     void app::run()
     {
         static float rotation;
+        vex_sprite_tex = std::make_unique<gfx::tex2d>("img/vex.png");
 
         while (is_running)
         {
@@ -56,8 +60,16 @@ namespace playground::core
             gfx::command::clear_color({ 0.2f, 0.2f, 0.2f, 1.0f });
 
             // Add draw calls
-            gfx::render2d::draw_quad(
-                { 0.0f, 0.0f }, rotation, glm::vec2(240.0f));
+            gfx::render2d::draw_quad({ -60.0f, 0.0f },
+                rotation,
+                glm::vec2(240.0f),
+                nullptr,
+                glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+
+            gfx::render2d::draw_quad({ 60.0f, 0.0f },
+                -rotation * 2.0f,
+                glm::vec2(240.0f),
+                vex_sprite_tex.get());
 
             constexpr float rotation_speed = 30.0f;
             rotation += time::get_delta_time() * rotation_speed;
@@ -68,6 +80,8 @@ namespace playground::core
             // Poll
             window->update();
         }
+
+        vex_sprite_tex.reset();
     }
 
     void app::close()

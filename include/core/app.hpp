@@ -1,7 +1,10 @@
 #pragma once
 
 #include "core/window.hpp"
+
 #include "gfx/ogl_ctx.hpp"
+#include "gfx/tex2d.hpp"
+
 #include <memory>
 
 namespace playground::core
@@ -22,6 +25,8 @@ namespace playground::core
 
         std::unique_ptr<window> window;
         std::unique_ptr<gfx::ogl_ctx> gfx_ctx;
+
+        std::unique_ptr<gfx::tex2d> vex_sprite_tex;
 
         void init_deps();
     };
